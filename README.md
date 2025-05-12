@@ -38,10 +38,10 @@ Ensure your board supports USB OTG functionality for full compatibility.
 
 ```
 +-------------------+                     +-----------------------+
-|     ESP32-S3      |                     |  Host (PC, Laptop, etc)|
+|     ESP32-S3      |                     |  Host (PC, Phone, etc)|
 |-------------------|                     |-----------------------|
 |     FreeRTOS      |                     |   USB Audio Class     |
-|   TinyUSB Stack   |  <==>  USB Link    | USB CDC-NCM (Net Link) |
+|   TinyUSB Stack   |  <==>  USB Link     | USB CDC-NCM (Network) |
 |  Softmodem Logic  |                     | Serial + Net Interface|
 | NCM Bridge Layer  |                     +-----------------------+
 +-------------------+
