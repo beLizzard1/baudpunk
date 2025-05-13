@@ -2,12 +2,6 @@
 
 // Audio format
 
-// Aliases for descriptor config macros
-#define USB_AUDIO_SAMPLE_RATE_HZ    USB_AUDIO_SAMPLE_RATE_HZ
-#define USB_AUDIO_NUM_CHANNELS      USB_AUDIO_NUM_CHANNELS
-#define USB_AUDIO_BIT_RESOLUTION    USB_AUDIO_BIT_RESOLUTION
-#define AUDIO_FRAME_SIZE            USB_AUDIO_FRAME_SIZE
-
 // Interface numbers
 enum {
     ITF_NUM_AUDIO_CONTROL = 0,

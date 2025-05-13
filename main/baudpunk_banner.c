@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "esp_log.h"
 #include "baudpunk_config.h"
+#include "esp_idf_version.h"
 
 void baudpunk_print_banner(void) {
     printf("\n");
