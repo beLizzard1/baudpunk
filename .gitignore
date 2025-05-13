@@ -1,0 +1,51 @@
+# ESP-IDF specific files
+# Build artifacts
+/build/
+/*.elf
+/*.bin
+/*.map
+/*.hex
+
+# CMake cache and IDF Python tooling output
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+project_description.json
+
+# IDF Python environment
+.env/
+.python_env/
+__pycache__/
+*.pyc
+*.pyo
+
+# VSCode / CLion / JetBrains project settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs
+*.log
+*.log.*
+
+# Generated configuration files
+/sdkconfig
+/sdkconfig.old
+
+# Component registry cache (managed components)
+managed_components/
+idf_component_manager.lock
+
+# Core dumps and system files
+core
+.DS_Store
+Thumbs.db
+
+# Optional: test output
+/test/*.o
+/test/*.gcda
+/test/*.gcno
+
+# Optional: custom build scripts
+*.sh~

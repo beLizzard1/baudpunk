@@ -1,3 +1,3 @@
-idf_component_register(SRCS "main.c"
+idf_component_register(SRCS "main.c" "baudpunk_banner.c"
                        INCLUDE_DIRS "."
-                       REQUIRES tinyusb usb_audio cdc_ncm)
+                       REQUIRES usb_core usb_audio usb_ncm)
