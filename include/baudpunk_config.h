@@ -37,6 +37,12 @@ extern "C" {
 #define NCM_HOST_IP_ADDRESS "192.168.9.1"
 #define NCM_DEVICE_IP_ADDRESS "192.168.9.2"
 
+// ========== TinyUSB Configuration ==========
+#define TINYUSB_ENABLED        1
+#define TINYUSB_CDC_ENABLED    1
+#define TINYUSB_AUDIO_ENABLED  1
+#define TINYUSB_NCM_ENABLED    1
+
 // ========== Debug Options ==========
 
 #define ENABLE_USB_DEBUG       1
