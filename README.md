@@ -57,13 +57,17 @@ Ensure your board supports USB OTG functionality for full compatibility.
 
 ```
 baudpunk/
-├── main/          # App entry point and logic glue
+├── main/                # App entry point and logic glue
+│   ├── main.c
+│   ├── baudpunk_banner.c
+│   └── baudpunk_banner.h
 ├── components/
-│   ├── tinyusb/   # TinyUSB integration
-│   ├── modem/     # FSK/PSK modem signal logic
-│   └── ncm/       # USB CDC-NCM interface logic
-├── include/       # Shared headers
-├── test/          # Unit tests (planned)
+│   ├── usb_core/        # TinyUSB stack setup and descriptors
+│   ├── usb_audio/       # USB Audio (UAC1) logic
+│   ├── usb_ncm/         # USB CDC-NCM (Ethernet) logic
+│   └── modem/           # Modem signal processing logic
+├── include/             # Shared headers (config, tusb_config.h)
+├── managed_components/  # External dependencies (e.g., tinyusb)
 ├── CMakeLists.txt
 └── README.md
 ```
@@ -96,7 +100,6 @@ idf.py build flash monitor
 - USB CDC-NCM virtual Ethernet gadget
 - Audio softmodem: FSK mod/demod
 - AT-style shell over CDC
-- Wiresharkable packet debug over USB
 - Phone-compatible USB modem simulation
 
 ---
