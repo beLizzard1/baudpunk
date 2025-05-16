@@ -8,6 +8,11 @@ extern "C" {
 #include <stdbool.h>
 #include "freertos/FreeRTOS.h"
 #include "esp_err.h"
+#include "tusb.h"
+#include "esp_log.h"
+#include "esp_check.h"
+#include "freertos/queue.h"
+#include "freertos/ringbuf.h"
 
 // ========== Public API ==========
 

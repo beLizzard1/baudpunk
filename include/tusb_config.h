@@ -4,18 +4,65 @@
 extern "C" {
 #endif
 
-// Required core config
-#define CFG_TUSB_MCU               OPT_MCU_ESP32S3
-#define CFG_TUSB_RHPORT0_MODE      OPT_MODE_DEVICE
-#define CFG_TUSB_OS                OPT_OS_FREERTOS
-#define CFG_TUSB_DEBUG             1
-#define CFG_TUSB_OS_INC_PATH   freertos/
-#define CFG_TUD_ENABLED 1
+//--------------------------------------------------------------------+
+// Board Specific Configuration
+//--------------------------------------------------------------------+
+
+// RHPort number used for device can be defined by board.mk, default to port 0
+#ifndef BOARD_TUD_RHPORT
+#define BOARD_TUD_RHPORT     0
+#endif
+
+// RHPort max operational speed can defined by board.mk
+#ifndef BOARD_TUD_MAX_SPEED
+#define BOARD_TUD_MAX_SPEED   OPT_MODE_DEFAULT_SPEED
+#endif
+
+//--------------------------------------------------------------------
+// COMMON CONFIGURATION
+//--------------------------------------------------------------------
 
 
-// Memory alignment
+// Define the mode for USB root hub port 0
+#ifndef CFG_TUSB_RHPORT0_MODE
+#define CFG_TUSB_RHPORT0_MODE     OPT_MODE_DEVICE // Set RHPort 0 to device mode
+#endif
+
+// This requires FreeRTOS
+#ifndef CFG_TUSB_OS
+#define CFG_TUSB_OS           OPT_OS_FREERTOS
+#endif
+
+// Espressif IDF requires "freertos/" prefix in include path
+#if TUSB_MCU_VENDOR_ESPRESSIF
+#define CFG_TUSB_OS_INC_PATH  freertos/
+#endif
+
+#define traceISR_EXIT_TO_SCHEDULER()
+
+// can be defined by compiler in DEBUG build
+#define CFG_TUSB_DEBUG        1
+
+// Enable Device stack
+#define CFG_TUD_ENABLED       1
+
+// Default is max speed that hardware controller could support with on-chip PHY
+#define CFG_TUD_MAX_SPEED     BOARD_TUD_MAX_SPEED
+
+/* USB DMA on some MCUs can only access a specific SRAM region with restriction on alignment.
+ * Tinyusb use follows macros to declare transferring memory so that they can be put
+ * into those specific section.
+ * e.g
+ * - CFG_TUSB_MEM SECTION : __attribute__ (( section(".usb_ram") ))
+ * - CFG_TUSB_MEM_ALIGN   : __attribute__ ((aligned(4)))
+ */
+#ifndef CFG_TUSB_MEM_SECTION
 #define CFG_TUSB_MEM_SECTION
-#define CFG_TUSB_MEM_ALIGN         __attribute__((aligned(4)))
+#endif
+
+#ifndef CFG_TUSB_MEM_ALIGN
+#define CFG_TUSB_MEM_ALIGN    __attribute__ ((aligned(4)))
+#endif
 
 // USB Classes enabled
 #define CFG_TUD_CDC                1

@@ -1,8 +1,9 @@
 idf_component_register(
-    SRCS "usb_descriptors.c"
+    SRCS "usb_descriptors.c" "usb_core.c"
     INCLUDE_DIRS "." "../../include"
-    PRIV_REQUIRES espressif__tinyusb
+    PRIV_REQUIRES espressif__tinyusb esp_system driver usb_core usb_audio usb_ncm modem
 )
+add_compile_definitions(CFG_TUSB_DEBUG=2)
 
 # Make the tusb_config.h from the project root available to tinyusb
 idf_component_get_property(tinyusb_lib espressif__tinyusb COMPONENT_LIB)
